@@ -42,10 +42,18 @@ public class MotorControl {
         double integralSum = 0;
         double lastError = 0;
 
+        double previousFilterEstimate = 0;
+        double currentFilterEstimate = 0;
+
+        double a = 0.7;
+
         double error = reference - position;
 
-        // rate of change of the error
-        double derivative = (error - lastError) / time;
+        // rate of change of the error and dampening
+        currentFilterEstimate = (a * previousFilterEstimate) + (1-a) * (error - lastError);
+        double derivative = currentFilterEstimate / time;
+
+
 
         // sum of all error over time
         integralSum = integralSum + (error * time);
@@ -55,7 +63,7 @@ public class MotorControl {
 
     }
 
-    public double angleWrap(double degrees) {
+    public static double angleWrap(double degrees) {
         double radians = Math.toRadians(degrees);
         while (radians > Math.PI) {
             radians -= 2 * Math.PI;
