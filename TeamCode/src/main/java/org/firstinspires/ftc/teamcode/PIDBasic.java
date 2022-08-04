@@ -14,9 +14,13 @@ public class PIDBasic {
 
     private double derivative = 0;
 
-    double Kp = 0;
-    double Ki = 0;
-    double Kd = 0;
+    double Kp, Ki, Kd;
+
+    public PIDBasic(double Kp, double Ki, double Kd){
+        this.Kp = Kp;
+        this.Ki = Ki;
+        this.Kd = Kd;
+    }
 
 
     public double calculate(double reference, double state) {

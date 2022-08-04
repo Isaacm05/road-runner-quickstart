@@ -41,9 +41,9 @@ public class TeleOpPID extends LinearOpMode {
         leftDCBack = hardwareMap.get(DcMotor.class, "leftBack");
         rightDCBack = hardwareMap.get(DcMotor.class, "rightBack");
 
-        xControl = new PIDBasic();
-        yControl = new PIDBasic();
-        thetaControl = new PIDBasic();
+        xControl = new PIDBasic(0,0,0);
+        yControl = new PIDBasic(0,0,0);
+        thetaControl = new PIDBasic(0,0,0);
         double x,y,t;
 
         SampleMecanumDriveCancelable drive = new SampleMecanumDriveCancelable(hardwareMap);
