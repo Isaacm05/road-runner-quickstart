@@ -70,7 +70,7 @@ public class CameraTest extends LinearOpMode {
         //THE FOLLOWING CODE RUNS AFTER THE DRIVER PRESSES START
 
         while (opModeIsActive() && !isStopRequested()) {
-            power = pid.calculate(160, pipeline.getPosition())/2;
+            power = pid.calculate(160, pipeline.getPosition())/4;
             chassis.setMotorPowers(power, power, -power, -power);
 
             chassis.update();
